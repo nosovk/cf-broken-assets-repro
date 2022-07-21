@@ -1,0 +1,88 @@
+{
+  "name": "businessforukraine",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "lint:fix": "prettier --write --plugin-search-dir=. . && eslint --fix --ignore-path .gitignore .",
+    "svelte-check": "svelte-check --use-new-transformation true --ignore \"src/routes/__error.svelte\"",
+    "lint:style": "stylelint \"src/**/*.+(scss|css|svelte)\"",
+    "lint:style:fix": "stylelint \"src/**/*.+(scss|css|svelte)\" --fix",
+    "format": "prettier --write --plugin-search-dir=. .",
+    "postbuild": "node --experimental-json-modules ./generate-sitemap.js",
+    "spell": "npx cspell lint \"**/*.{ts,svelte,scss}\" -c configs/.cspell.json --no-progress",
+    "optimize-svg": "find ./src ./static -name '*.svg' -print0 | xargs -0 -P16 -L20 npx svgo"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.9",
+    "@nodeart/stylelint-config-nodeart": "^0.0.9",
+    "@sveltejs/adapter-cloudflare": "1.0.0-next.30",
+    "@sveltejs/kit": "next",
+    "@types/sanitize-html": "^2.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "autoprefixer": "^10.4.7",
+    "cssnano": "^5.1.12",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "postcss-scss": "^4.0.4",
+    "prettier": "~2.7.1",
+    "prettier-plugin-svelte": "^2.7.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.0.1",
+    "remark-abbr": "^1.4.1",
+    "sass": "^1.53.0",
+    "schema-dts": "^1.1.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "svelte": "^3.49.0",
+    "svelte-check": "^2.8.0",
+    "svelte-preprocess": "^4.10.7",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4",
+    "unist-util-visit": "^4.1.0",
+    "vite": "^2.9.14",
+    "vite-imagetools": "^4.0.4",
+    "xmlbuilder2": "^3.0.2"
+  },
+  "type": "module",
+  "stylelint": {
+    "extends": [
+      "@nodeart/stylelint-config-nodeart",
+      "stylelint-config-html/html",
+      "stylelint-config-html/svelte",
+      "stylelint-config-prettier-scss"
+    ],
+    "ignoreFiles": [
+      "src/styles/normalize.+(scss|css)",
+      "src/styles/fonts.+(scss|css)",
+      "src/styles/vars.+(scss|css)"
+    ],
+    "rules": {
+      "no-descending-specificity": null,
+      "plugin/no-low-performance-animation-properties": null,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ]
+    }
+  },
+  "url": "https://businessforukraine.info",
+  "dependencies": {
+    "@ungap/url-search-params": "^0.2.2",
+    "sanitize-html": "^2.7.1"
+  }
+}
